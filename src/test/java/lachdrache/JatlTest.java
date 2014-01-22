@@ -44,15 +44,22 @@ public class JatlTest {
         StringBuilder expected = new StringBuilder();
         expected.append("\n<h1>JATL\n</h1>");
         expected.append("\n<h1>Java Anti-Template Language\n</h1>");
+        expected.append("\n<h2>https://code.google.com/p/jatl/\n</h2>");
+        expected.append("\n<p>Is an extremely lightweight efficient Java library\n</p>");
 
         StringWriter htmlWriter = new StringWriter();
         new Html(htmlWriter) {{
             h1().text("JATL").end();
             h1().text("Java Anti-Template Language").end();
+            h2().text("https://code.google.com/p/jatl/").end();
+            p().text("Is an extremely lightweight efficient Java library").end();
+            endAll();
             done();
         }};
         assertEquals(expected.toString(), htmlWriter.toString());
     }
+
+    // TODO try indenter
 
 
 }
