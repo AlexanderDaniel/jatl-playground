@@ -19,4 +19,14 @@ public class JatlTest {
         assertEquals("\n<html>\n</html>", htmlWriter.toString());
     }
 
+    @Test
+    public void justBody() throws Exception {
+        StringWriter htmlWriter = new StringWriter();
+        new Html(htmlWriter) {{
+            body();
+            done();
+        }};
+        assertEquals("\n<body/>", htmlWriter.toString());
+    }
+
 }
