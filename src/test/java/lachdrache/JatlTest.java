@@ -62,7 +62,17 @@ public class JatlTest {
         assertEquals(expected.toString(), htmlWriter.toString());
     }
 
-    // TODO try indenter
-
+    @Test
+    public void testIndenter() throws Exception {
+        StringWriter htmlWriter = new StringWriter();
+        new Html(htmlWriter) {{
+            indent(indentOff);
+            body();
+                p().text("How does it look like?").end();
+            endAll();
+            done();
+        }};
+        assertEquals("<body><p>How does it look like?</p></body>", htmlWriter.toString());
+    }
 
 }
