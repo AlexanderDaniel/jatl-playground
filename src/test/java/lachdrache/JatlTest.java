@@ -14,6 +14,7 @@ public class JatlTest {
         StringWriter htmlWriter = new StringWriter();
         new Html(htmlWriter) {{
             html();
+            endAll();
             done();
         }};
         assertEquals("\n<html>\n</html>", htmlWriter.toString());
@@ -24,6 +25,7 @@ public class JatlTest {
         StringWriter htmlWriter = new StringWriter();
         new Html(htmlWriter) {{
             body();
+            endAll();
             done();
         }};
         assertEquals("\n<body/>", htmlWriter.toString());
@@ -34,6 +36,7 @@ public class JatlTest {
         StringWriter htmlWriter = new StringWriter();
         new Html(htmlWriter) {{
             p();
+            endAll();
             done();
         }};
         assertEquals("\n<p/>", htmlWriter.toString());
