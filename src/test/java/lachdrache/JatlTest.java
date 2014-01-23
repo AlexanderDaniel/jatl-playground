@@ -2,7 +2,7 @@ package lachdrache;
 
 import com.googlecode.jatl.Html;
 import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.StringWriter;
@@ -12,8 +12,8 @@ import static org.junit.Assert.assertEquals;
 
 public class JatlTest {
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUpClass() {
         XMLUnit.setIgnoreWhitespace(true);
     }
 
