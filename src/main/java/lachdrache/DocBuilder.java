@@ -11,27 +11,35 @@ class DocBuilder {
     private final StringWriter sw = new StringWriter();
     private final Html html = new Html(sw);
 
-    private void firstSection() {
+    public DocBuilder() {
+        html.indent(INDENT_SAME_LINE);
+    }
+
+    void firstSection() {
         html.
                 h1().text("JATL").end()
                 .p().text("Java Anti-Template Language").end();
     }
 
-    private void secondSection() {
+    void secondSection() {
         html.h1().text("Double Brace Initialization").end();
         html.p().text("One of the Java idioms").end();
     }
 
-    public String get() {
-        html.indent(INDENT_SAME_LINE);
+    public String getDoc() {
         html.body();
 
         firstSection();
         secondSection();
 
         html.endAll();
-        html.done();
 
+        return get();
+    }
+
+    public String get() {
+        html.done();
         return sw.toString();
     }
+
 }

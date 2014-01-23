@@ -84,7 +84,14 @@ public class JatlTest {
         expected.append("\t<p>Java Anti-Template Language</p>\n");
         expected.append("\t<h1>Double Brace Initialization</h1>\n");
         expected.append("\t<p>One of the Java idioms</p></body>");
-        assertEquals(expected.toString(), new DocBuilder().get());
+        assertEquals(expected.toString(), new DocBuilder().getDoc());
+    }
+
+    @Test
+    public void testFirstSectionIndividually() throws Exception {
+        DocBuilder docBuilder = new DocBuilder();
+        docBuilder.firstSection();
+        assertEquals("\n<h1>JATL</h1>\n<p>Java Anti-Template Language</p>", docBuilder.get());
     }
 
     /**
@@ -99,7 +106,5 @@ public class JatlTest {
         }};
         assertEquals("\n<div><p>innerHtml</p>\n</div>", htmlWriter.toString());
     }
-
-    // TODO test functions individually
 
 }
