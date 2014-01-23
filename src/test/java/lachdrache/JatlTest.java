@@ -1,13 +1,21 @@
 package lachdrache;
 
 import com.googlecode.jatl.Html;
+import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.StringWriter;
 
+import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
 import static org.junit.Assert.assertEquals;
 
 public class JatlTest {
+
+    @Before
+    public void setUp() throws Exception {
+        XMLUnit.setIgnoreWhitespace(true);
+    }
 
     @Test
     public void justHtml() throws Exception {
@@ -144,11 +152,10 @@ public class JatlTest {
     public void brInParagraph() throws Exception {
         StringWriter sw = new StringWriter();
         new Html(sw) {{
-            indent(indentOff);
             p().text("1st line").br().text("2nd line").end();
             done();
         }};
-        assertEquals("<p>1st line<br/>2nd line</p>", sw.toString());
+        assertXMLEqual("<p>1st line<br/>2nd line</p>", sw.toString());
     }
 
 
