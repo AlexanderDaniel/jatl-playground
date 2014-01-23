@@ -107,4 +107,26 @@ public class JatlTest {
         assertEquals("\n<div><p>innerHtml</p>\n</div>", htmlWriter.toString());
     }
 
+    @Test
+    public void head() throws Exception {
+        StringWriter expected = new StringWriter();
+        expected.append("\n");
+        expected.append("<head>\n");
+        expected.append("\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"/>\n");
+        expected.append("\t<title>JATL</title>\n");
+        expected.append("\t<link media=\"all\" rel=\"stylesheet\" type=\"text/css\" href=\"main.css\"/></head>");
+        StringWriter htmlWriter = new StringWriter();
+        new Html(htmlWriter) {{
+            indent(indentSameLine);
+            head();
+            meta().httpEquiv("content-type").content("application/xhtml+xml; charset=UTF-8").end();
+            title().text("JATL").end();
+            link().media("all").rel("stylesheet").type("text/css").href("main.css").end();
+            endAll();
+            done();
+        }};
+        assertEquals(expected.toString(), htmlWriter.toString());
+    }
+
+
 }
