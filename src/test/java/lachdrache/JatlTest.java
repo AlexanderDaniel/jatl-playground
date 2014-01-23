@@ -128,5 +128,17 @@ public class JatlTest {
         assertEquals(expected.toString(), htmlWriter.toString());
     }
 
+    @Test
+    public void testHtml() throws Exception {
+        StringWriter sw = new StringWriter();
+        Html html = new Html(sw);
+        html.html();
+        html.head().end();
+        html.body().end();
+        html.endAll();
+        html.done();
+        assertEquals("\n<html>\n\t<head>\n\t</head>\n\t<body/>\n</html>", sw.toString());
+    }
+
 
 }
