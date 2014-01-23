@@ -75,4 +75,31 @@ public class JatlTest {
         assertEquals("<body><p>How does it look like?</p></body>", htmlWriter.toString());
     }
 
+    @Test
+    public void composeHtmlOutOfFunctions() throws Exception {
+        StringBuilder expected = new StringBuilder();
+        expected.append("\n");
+        expected.append("<body>\n");
+        expected.append("\t<h1>JATL</h1>\n");
+        expected.append("\t<p>Java Anti-Template Language</p>\n");
+        expected.append("\t<h1>Double Brace Initialization</h1>\n");
+        expected.append("\t<p>One of the Java idioms</p></body>");
+        assertEquals(expected.toString(), new DocBuilder().get());
+    }
+
+    /**
+     * Maybe you get some HTML as string which you want to include in your document
+     */
+    @Test
+    public void addInnerHtml() throws Exception {
+        StringWriter htmlWriter = new StringWriter();
+        new Html(htmlWriter) {{
+            div().raw("<p>innerHtml</p>").end();
+            done();
+        }};
+        assertEquals("\n<div><p>innerHtml</p>\n</div>", htmlWriter.toString());
+    }
+
+    // TODO test functions individually
+
 }

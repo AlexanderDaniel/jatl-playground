@@ -1,4 +1,3 @@
-jatl-playground
-===============
+[Java Anti-Template Language (JATL)](https://code.google.com/p/jatl/) playground
 
-Java Anti-Template Language (JATL) Playground
+JATL uses the [Double Brace Initialization](http://c2.com/cgi/wiki?DoubleBraceInitialization) idiom.
