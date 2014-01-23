@@ -140,5 +140,16 @@ public class JatlTest {
         assertEquals("\n<html>\n\t<head>\n\t</head>\n\t<body/>\n</html>", sw.toString());
     }
 
+    @Test
+    public void brInParagraph() throws Exception {
+        StringWriter sw = new StringWriter();
+        new Html(sw) {{
+            indent(indentOff);
+            p().text("1st line").br().text("2nd line").end();
+            done();
+        }};
+        assertEquals("<p>1st line<br/>2nd line</p>", sw.toString());
+    }
+
 
 }
