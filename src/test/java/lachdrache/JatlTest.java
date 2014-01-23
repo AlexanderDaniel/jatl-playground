@@ -158,5 +158,16 @@ public class JatlTest {
         assertXMLEqual("<p>1st line<br/>2nd line</p>", sw.toString());
     }
 
+    @Test
+    public void xhmtlWithNamespaceDecl() throws Exception {
+        StringWriter sw = new StringWriter();
+        new Html(sw) {{
+            html().xmlns("http://www.w3.org/1999/xhtml");
+            endAll();
+            done();
+        }};
+        assertXMLEqual("<html xmlns=\"http://www.w3.org/1999/xhtml\"></html>", sw.toString());
+    }
+
 
 }
