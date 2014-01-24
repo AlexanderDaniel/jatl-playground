@@ -117,7 +117,7 @@ public class JatlTest {
 
     @Test
     public void head() throws Exception {
-        StringWriter expected = new StringWriter();
+        StringBuilder expected = new StringBuilder();
         expected.append("\n");
         expected.append("<head>\n");
         expected.append("\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"/>\n");
